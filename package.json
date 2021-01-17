@@ -1,7 +1,7 @@
 {
   "name": "store-api-react",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "./src",
   "repository": "git@github.com:EvgenyiFedotov/store-api-react.git",
   "author": "EvgenyiFedotov <fedotov1290@gmail.com>",
   "license": "MIT",
