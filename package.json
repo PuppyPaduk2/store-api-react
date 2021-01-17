@@ -6,7 +6,9 @@
   "author": "EvgenyiFedotov <fedotov1290@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "react": "^16.13.1",
     "store-api": "https://github.com/EvgenyiFedotov/store-api.git"
+  },
+  "peerDependencies": {
+    "react": "^17.0.1"
   }
 }
