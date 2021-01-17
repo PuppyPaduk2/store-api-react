@@ -1,5 +1,5 @@
-import { createContext, useState, useEffect, useContext as useContextReact, useMemo } from "react";
-import { getRootContextScope } from "store-api";
+const { createContext, useState, useEffect, useContext: useContextReact, useMemo } = require("react");
+const { getRootContextScope } = require("store-api");
 
 const Context = createContext(getRootContextScope());
 
@@ -44,4 +44,4 @@ function useContext(callback) {
   }, [scope, callback]);
 }
 
-module.exports = { Context, useStoreState, useContext };
+module.exports = { Context, useStoreState, useUnionState, useContext };
