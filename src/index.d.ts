@@ -16,7 +16,7 @@ export function useContext<Result>(callback: () => Result): Result;
 export function useServerContext(callback: () => any): Promise<void>;
 
 export function allSettled(
-  promises: Array<Promise<any>>
+  contextScope: ContextScope
 ): Promise<
   Array<{ status: "fulfilled" | "rejected"; value?: any; reason?: any }>
->
+>;
