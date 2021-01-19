@@ -12,11 +12,3 @@ export function useUnionState<Depends extends { [key: string]: Store<any, any> }
 ): any;
 
 export function useContext<Result>(callback: () => Result): Result;
-
-export function useServerContext(key: string, callback: () => any): Promise<void>;
-
-export function allSettled(
-  contextScope: ContextScope
-): Promise<
-  Array<{ status: "fulfilled" | "rejected"; value?: any; reason?: any }>
->;

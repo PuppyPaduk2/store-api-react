@@ -44,45 +44,9 @@ function useContext(callback) {
   }, [scope, callback]);
 }
 
-const serverContextRequests = new Map();
-
-function useServerContext(key, callback) {
-  const scope = useContextReact(Context);
-
-  return useMemo(async () => {
-    if (typeof window === "undefined") {
-      const scopeResult = scope(callback);
-
-      if (scopeResult instanceof Promise) {
-        let requests = serverContextRequests.get(scope) || null;
-
-        if (requests === null) {
-          requests = new Map();
-        }
-
-        if (requests.has(key) === false) {
-          requests.set(key, scopeResult);
-        }
-
-        await scopeResult;
-      }
-    }
-  }, [scope]);
-}
-
-function allSettled(contextScope) {
-  const requests = serverContextRequests.get(contextScope) || new Map();
-
-  serverContextRequests.set(contextScope, new Map());
-
-  return Promise.allSettled(Array.from(requests.values()));
-}
-
 module.exports = {
   Context: Context.Provider,
   useStoreState,
   useUnionState,
   useContext,
-  useServerContext,
-  allSettled,
 };
