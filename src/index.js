@@ -55,7 +55,7 @@ function useServerContext(callback) {
 
       if (scopeResult instanceof Promise) {
         serverContextRequests.set(scope, [
-          ...serverContextRequests.get(scope),
+          ...(serverContextRequests.get(scope) || []),
           scopeResult,
         ]);
 
