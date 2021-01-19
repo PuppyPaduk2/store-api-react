@@ -1,7 +1,7 @@
 import { Context as ReactContext } from "react";
 import { ContextScope, Store, StoreApi, Union } from "store-api";
 
-export type Context = ReactContext<ContextScope>;
+export function Context(...args: Parameters<ReactContext<ContextScope>["Provider"]>): ReturnType<ReactContext<ContextScope>["Provider"]>;
 
 export function useStoreState<State, Api extends StoreApi<State>>(
   store: Store<State, Api>,

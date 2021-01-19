@@ -44,4 +44,9 @@ function useContext(callback) {
   }, [scope, callback]);
 }
 
-module.exports = { Context, useStoreState, useUnionState, useContext };
+module.exports = {
+  Context: Context.Provider,
+  useStoreState,
+  useUnionState,
+  useContext,
+};

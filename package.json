@@ -13,5 +13,8 @@
   },
   "peerDependencies": {
     "react": "^17.0.1"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.0"
   }
 }
