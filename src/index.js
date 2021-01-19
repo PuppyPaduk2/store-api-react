@@ -46,7 +46,7 @@ function useContext(callback) {
 
 const serverContextRequests = new Map();
 
-function useServerContext(callback) {
+function useServerContext(key, callback) {
   const scope = useContextReact(Context);
 
   return useMemo(async () => {
@@ -54,10 +54,15 @@ function useServerContext(callback) {
       const scopeResult = scope(callback);
 
       if (scopeResult instanceof Promise) {
-        serverContextRequests.set(scope, [
-          ...(serverContextRequests.get(scope) || []),
-          scopeResult,
-        ]);
+        let requests = serverContextRequests.get(scope) || null;
+
+        if (requests === null) {
+          requests = new Map();
+        }
+
+        if (requests.has(key) === false) {
+          requests.set(key, scopeResult);
+        }
 
         await scopeResult;
       }
@@ -66,11 +71,11 @@ function useServerContext(callback) {
 }
 
 function allSettled(contextScope) {
-  const requests = serverContextRequests.get(contextScope) || [];
+  const requests = serverContextRequests.get(contextScope) || new Map();
 
-  serverContextRequests.set(contextScope, []);
+  serverContextRequests.set(contextScope, new Map());
 
-  return Promise.allSettled(requests);
+  return Promise.allSettled(Array.from(requests.values()));
 }
 
 module.exports = {

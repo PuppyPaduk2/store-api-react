@@ -13,7 +13,7 @@ export function useUnionState<Depends extends { [key: string]: Store<any, any> }
 
 export function useContext<Result>(callback: () => Result): Result;
 
-export function useServerContext(callback: () => any): Promise<void>;
+export function useServerContext(key: string, callback: () => any): Promise<void>;
 
 export function allSettled(
   contextScope: ContextScope
