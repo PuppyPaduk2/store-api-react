@@ -6,7 +6,7 @@
   "author": "EvgenyiFedotov <fedotov1290@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "sa": "yarn remove store-api && yarn add https://github.com/EvgenyiFedotov/store-api.git"
+    "store-api": "npm uninstall store-api && npm install https://github.com/EvgenyiFedotov/store-api.git"
   },
   "dependencies": {
     "store-api": "https://github.com/EvgenyiFedotov/store-api.git"
