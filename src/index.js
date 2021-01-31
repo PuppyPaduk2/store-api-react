@@ -1,4 +1,10 @@
-const { createContext, useState, useEffect, useContext: useContextReact, useMemo } = require("react");
+const {
+  createContext,
+  useState,
+  useEffect,
+  useContext: useContextReact,
+  useMemo,
+} = require("react");
 const { rootContext } = require("store-api");
 
 const Context = createContext(rootContext);
@@ -12,9 +18,11 @@ function useContext(callback) {
 function useStore(storeInstance) {
   const [state, setState] = useState(storeInstance.getState());
 
-  useEffect(() => {
+  useMemo(() => {
     storeInstance.on(setState);
+  }, [storeInstance]);
 
+  useEffect(() => {
     return () => {
       storeInstance.off(setState);
     };
